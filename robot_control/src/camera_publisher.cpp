@@ -10,8 +10,7 @@
 
 using namespace std::chrono_literals;
 
-/* This example creates a subclass of Node and uses std::bind() to register a
-* member function as a callback from the timer. */
+/* node used for testing the control and feedback topics for the camera joint rotation */
 
 class MinimalPublisher : public rclcpp::Node
 {
@@ -29,15 +28,14 @@ class MinimalPublisher : public rclcpp::Node
     void timer_callback()
     {
       auto message = std_msgs::msg::Float64MultiArray();
-      /* auto msg_layout = std_msgs::msg::MultiArrayLayout();
-      msg_layout.dim = 1; */
+
       auto msg_dim = std_msgs::msg::MultiArrayDimension();
       msg_dim.size = 1;
       message.layout.dim.push_back(msg_dim);
-      //message.layout.push_back(msg_layout);
+
       auto des_speed = this->get_parameter("camera_rotation_speed").as_double();
       message.data.push_back(des_speed);
-      //RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
+
       publisher_->publish(message);
     }
     rclcpp::TimerBase::SharedPtr timer_;

@@ -36,16 +36,16 @@ find_package (control_msgs REQUIRED)
 
 
 
-add_executable (Robot_controller robot_control.cpp)
-ament_target_dependencies (Robot_controller rclcpp geometry_msgs targets_interface nav_msgs std_msgs tf2)
+add_executable (Robot_controller src/robot_control.cpp)
+ament_target_dependencies (Robot_controller rclcpp geometry_msgs targets_interface nav_msgs std_msgs)
 
-add_executable (simple_controller basic_robot_controller.cpp)
+add_executable (simple_controller src/basic_robot_controller.cpp)
 ament_target_dependencies (simple_controller rclcpp geometry_msgs)
 
-add_executable (camera_publisher camera_publisher.cpp)
+add_executable (camera_publisher src/camera_publisher.cpp)
 ament_target_dependencies (camera_publisher std_msgs rclcpp)
 
-add_executable (Camera_controller camera_controller.cpp)
+add_executable (Camera_controller src/camera_controller.cpp)
 ament_target_dependencies (Camera_controller std_msgs rclcpp targets_interface sensor_msgs control_msgs)
 
 

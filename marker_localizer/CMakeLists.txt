@@ -21,29 +21,19 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 find_package (rclcpp REQUIRED)
-find_package (geometry_msgs REQUIRED)
-find_package (std_msgs REQUIRED)
-find_package (cv_bridge REQUIRED)
-find_package (OpenCV REQUIRED)
-find_package (sensor_msgs REQUIRED)
 find_package (ros2_aruco_interfaces REQUIRED)
 find_package (targets_interface REQUIRED)
-find_package(nav_msgs REQUIRED)
-find_package(tf2 REQUIRED)
-find_package(tf2_ros REQUIRED)
-#find_package (aruco REQUIRED)
 
 
-#add_executable (Robot_controller robot_control.cpp)
-add_executable (aruco_test aruco_detection_test.cpp)
 
-#ament_target_dependencies (Robot_controller rclcpp geometry_msgs)
-ament_target_dependencies (aruco_test rclcpp tf2_ros tf2 nav_msgs ros2_aruco_interfaces targets_interface)
+
+add_executable (marker_sorter src/Marker_sorter.cpp)
+ament_target_dependencies (marker_sorter rclcpp ros2_aruco_interfaces targets_interface)
 
 
 
 install (TARGETS
-	aruco_test
+	marker_sorter
 	DESTINATION lib/${PROJECT_NAME}/
 )
 
