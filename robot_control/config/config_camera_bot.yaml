@@ -1,0 +1,24 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+    use_sim_time: true
+
+    joint_camera_controller:
+      type: forward_command_controller/ForwardCommandController
+      
+    joint_broad:
+      type: joint_state_broadcaster/JointStateBroadcaster
+      
+      
+joint_camera_controller:
+  ros__parameters:
+    joints:
+      - camera_joint
+    interface_name: velocity
+    command_interfaces:
+      - velocity
+    state_interfaces:
+      - position
+      - velocity
+      
+
