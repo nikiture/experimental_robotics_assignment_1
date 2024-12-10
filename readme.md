@@ -18,10 +18,13 @@ The program is composed of 4 packages:
 ## nodes flowchart
 Here are the flowchart showing the behaviour of the nodes:
 - main nodes (same behaviour, just different topics for control and sensing):
+
 ![flowchart showing logic of the main/control nodes](flowcharts_images/main_control_image.png)
 - marker_sorter:
+
 ![flowchart showing logic of the marker_sorter node](flowcharts_images/marker_sorter_image.png)
 - marker_circler:
+
 ![flowchart showing logic of the marker_circler node](flowcharts_images/marker_circler_image.png)
 ## topics created by these nodes
 the program, aside from using already created topics from simulation nodes (and from the ros2_aruco aruco_node) creates 4 topics:
