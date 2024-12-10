@@ -15,6 +15,14 @@ The program is composed of 4 packages:
 - `marker_localizer`: here is placed the marker_sorter node, tasked to store, sorted in increasing order of marker IDs, the orientations of the robot (or of the camera) in whih each of the markers is seen for the first time in the camera and transmit them to the main node; the marker IDs are obtained from the aruco node of the ros2_aruco package, the robot/camera orientation is obtained via a custom message from the main node and the sorted orientations are published using another custom message; this node also has the parameter `starting_rotation_speed`, which is used for the estimation of the full lap completion: as such this should have the same value as the `starting_rotation_speed` parameter of the main node when running the program
 - `py_cv_marker`: to this package belongs the marker_circler node, tasked to draw a circle around the marker currently in the camera view and publish the resulting image on a custom topic; it is triggered by a message from the main node;
 - `targets_interface`: this package contains the two custom messages used to transmit the orientations between the marker sorter and the main nodes: `targets_interface/msg/RobotYaw` and `targets_interface/msg/TargetsYaw`.
+## nodes flowchart
+Here are the flowchart showing the behaviour of the nodes:
+- main nodes (same behaviour, just different topics for control and sensing):
+![flowchart showing logic of the main/control nodes](flowcharts_images/main_control_image.png)
+- marker_sorter:
+![flowchart showing logic of the marker_sorter node](flowcharts_images/marker_sorter_image.png)
+- marker_circler:
+![flowchart showing logic of the marker_circler node](flowcharts_images/marker_circler_image.png)
 ## topics created by these nodes
 the program, aside from using already created topics from simulation nodes (and from the ros2_aruco aruco_node) creates 4 topics:
 - `/images/circled_markers`, type `sensor_msgs/msg/Image`: here the images containing the markers with the (red) circle drawn around them are published by the `marker_circler` node;
