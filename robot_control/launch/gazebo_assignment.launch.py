@@ -45,7 +45,7 @@ def generate_launch_description():
     
     marker_printer = Node (
         package = 'marker_localizer',
-        executable = 'aruco_test',
+        executable = 'marker_sorter',
         parameters = [
             #{"starting_rotation_speed": "1.0"}
             {"starting_rotation_speed": 1.0}
